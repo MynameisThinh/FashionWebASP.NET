@@ -1,0 +1,29 @@
+﻿<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">@ViewBag.Title</h3>
+        </div>
+        <div class="card-body">
+            <div id="load_page"></div>
+            @Html.Action("Partial_Setting", "SettingSystem")
+        </div>
+
+        <div class="card-footer">
+
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+    <script>
+
+        function BrowseServer(field) {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                document.getElementById(field).value = fileUrl;
+            };
+            finder.popup();
+        }
+    </script>
+}

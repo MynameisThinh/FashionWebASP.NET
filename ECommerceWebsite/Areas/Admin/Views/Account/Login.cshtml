@@ -1,0 +1,57 @@
+﻿@model ECommerceWebsite.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="card-body login-card-body">
+    <p class="login-box-msg">Đăng nhập vào admin</p>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+        @Html.ValidationSummary();
+        <div class="input-group mb-3">
+            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder = "Tài khoản" })
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="icheck-primary">
+                    @*<input type="checkbox" id="remember">*@
+                    @Html.CheckBoxFor(x => x.RememberMe)
+                    <label for="remember">
+                        Nhớ tài khoản
+                    </label>
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+    }
+
+
+    <!-- /.social-auth-links -->
+
+    <p class="mb-1">
+        <a href="#">Quên mật khẩu</a>
+    </p>
+    @*<p class="mb-0">
+            <a href="register.html" class="text-center">Register a new membership</a>
+        </p>*@
+</div>
+
